@@ -130,7 +130,7 @@ const Popup = styled.span`
   justify-content: center;
   align-items: center;
   top: -1rem;
-  right: 2.5rem;
+  right: 0;
 `;
 
 function Header() {

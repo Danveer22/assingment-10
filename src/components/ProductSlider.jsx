@@ -84,6 +84,7 @@ const StyledSlider = styled(Slider)`
 
     @media (max-width: 450px) {
       display: block !important;
+      z-index: 1;
     }
   }
   @media (max-width: 450px) {

@@ -10,6 +10,14 @@ const StyledAside = styled.aside`
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  z-index: 999;
+
+  @media (max-width: 450px) {
+    right: 58%;
+    transform: translateX(50%);
+    width: 22rem;
+    top: 2%;
+  }
 
   h2 {
     font-size: 1.2rem;
@@ -17,6 +25,10 @@ const StyledAside = styled.aside`
     padding: 0.6rem 2rem;
     height: 3.6rem;
     border-bottom: 1px solid rgba(107, 107, 107, 0.1);
+
+    @media (max-width: 450px) {
+      height: 2rem;
+    }
   }
 `;
 
@@ -41,10 +53,17 @@ const OrderItem = styled.article`
   column-gap: 1.2rem;
   align-items: center;
 
+  @media (max-width: 450px) {
+    grid-template-columns: 5rem auto 1rem;
+  }
+
   img {
     width: 100%;
     height: 100%;
     border-radius: 8px;
+
+    @media (max-width: 450px) {
+    }
   }
 `;
 
