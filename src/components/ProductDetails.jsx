@@ -5,12 +5,23 @@ const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+
+  @media (max-width: 450px) {
+    width: 100%;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+  }
 
   h1 {
     font-size: 3.2rem;
     line-height: 1.1;
     margin-bottom: 2.6rem;
     color: var(--color-dark-blue);
+
+    @media (max-width: 450px) {
+      font-size: 2.4rem;
+    }
   }
 
   p {
@@ -28,6 +39,10 @@ const Tag = styled.span`
   letter-spacing: 1.8px;
   text-transform: uppercase;
   margin-bottom: 1.2rem;
+
+  @media (max-width: 450px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Prices = styled.div`
@@ -37,11 +52,20 @@ const Prices = styled.div`
   column-gap: 0.8rem;
   row-gap: 1rem;
   margin-bottom: 3rem;
+
+  @media (max-width: 450px) {
+    grid-template-columns: 5rem 4rem 1fr;
+  }
 `;
 
 const Price = styled.span`
   font-size: 2.1rem;
   font-weight: 700;
+
+  @media (max-width: 450px) {
+    font-size: 1.4rem;
+    font-weight: 900;
+  }
 `;
 const Discount = styled.span`
   background-color: var(--color-dark-blue);
@@ -59,12 +83,21 @@ const DiscountOn = styled.span`
   text-decoration: line-through;
   color: var(--color-dark-grayish-blue);
   font-size: 1.1rem;
+
+  @media (max-width: 450px) {
+    justify-self: end;
+  }
 `;
 
 const Buttons = styled.div`
   display: flex;
   gap: 2rem;
   align-items: center;
+
+  @media (max-width: 450px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const AddSubButton = styled.div`
@@ -75,6 +108,10 @@ const AddSubButton = styled.div`
   align-items: center;
   justify-content: space-between;
   border-radius: 5px;
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 
   button {
     border: none;
@@ -94,6 +131,11 @@ const CartButton = styled.div`
   gap: 1.2rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
+
+  @media (max-width: 450px) {
+    width: 100%;
+  }
+
   svg path {
     fill: var(--color-dark-blue);
     font-weight: bolder;

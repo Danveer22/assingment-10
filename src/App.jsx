@@ -7,6 +7,7 @@ import ProductDetails from "./components/ProductDetails";
 import ProductSlider from "./components/ProductSlider";
 import Cart from "./components/Cart";
 import OverlayProductSlider from "./components/OverlayProductSlider";
+import ButtonClose from "./components/ButtonClose";
 
 const Product = styled.main`
   width: 75%;
@@ -16,6 +17,15 @@ const Product = styled.main`
   display: grid;
   grid-template-columns: 33rem 32rem;
   column-gap: 9rem;
+  position: relative;
+
+  @media (max-width: 375px) {
+    width: 100%;
+    grid-template-columns: 24rem;
+
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const Overlay = styled.div`
@@ -35,6 +45,7 @@ function App() {
       {isSlider && (
         <Overlay>
           <OverlayProductSlider />
+          <ButtonClose onSlider={setIsSlider} />
         </Overlay>
       )}
       <Header />

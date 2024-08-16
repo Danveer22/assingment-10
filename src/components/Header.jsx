@@ -11,10 +11,21 @@ const StyledHeader = styled.header`
   border-bottom: 1px solid rgba(51, 51, 51, 0.253);
   position: relative;
 
+  @media (max-width: 450px) {
+    padding: 1.4rem;
+    grid-template-columns: 2rem 6rem 7rem 3rem 3rem;
+    width: 100%;
+    height: 6rem;
+  }
+
   ul {
     list-style: none;
     display: flex;
     gap: 2.8rem;
+
+    @media (max-width: 450px) {
+      display: none;
+    }
   }
 
   li {
@@ -50,6 +61,18 @@ const StyledHeader = styled.header`
 
 const Logo = styled.img`
   height: 1.5rem;
+
+  @media (max-width: 450px) {
+    height: 1.2rem;
+  }
+`;
+
+const Menu = styled.img`
+  display: none;
+
+  @media (max-width: 450px) {
+    display: block;
+  }
 `;
 
 const CartButton = styled.button`
@@ -83,6 +106,11 @@ const Avatar = styled.img`
   transition: transform 0.3s ease, border-color 0.3s ease;
   will-change: transform, border-color;
 
+  @media (max-width: 450px) {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
   &:hover {
     border-color: var(--color-primary);
     transform: scale(1.05);
@@ -113,6 +141,7 @@ function Header() {
   }
   return (
     <StyledHeader>
+      <Menu src="/images/icon-menu.svg" alt="menu icon" />
       <Logo src="/images/logo.svg" alt="company logo" />
       <nav>
         <ul>

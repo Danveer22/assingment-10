@@ -27,7 +27,7 @@ const imgs = [
 
 const SliderContainer = styled.div`
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   width: 30%;
   z-index: 999;

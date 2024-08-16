@@ -64,10 +64,19 @@ body {
 
 .slick-prev {
     left: -15px; 
+
+    @media(max-width: 450px) {
+        left: 30px;
+    }
 }
 
 .slick-next {
-    right: -15px; 
+    right: -15px;
+
+    @media(max-width: 450px) {
+        right: 30px;
+    }
+
    
 }
 

@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 // Array of image paths
 const imgs = [
@@ -28,6 +29,11 @@ const imgs = [
 const SliderContainer = styled.div`
   position: relative;
   height: 41rem;
+
+  @media (max-width: 375px) {
+    height: 20rem;
+    align-self: center;
+  }
 `;
 
 const StyledSlide = styled.div`
@@ -36,6 +42,10 @@ const StyledSlide = styled.div`
     height: auto;
     display: block;
     border-radius: 1rem;
+
+    @media (max-width: 375px) {
+      border-radius: 0;
+    }
   }
 `;
 
@@ -71,13 +81,35 @@ const StyledSlider = styled(Slider)`
   .slick-prev,
   .slick-next {
     display: none !important;
+
+    @media (max-width: 375px) {
+      display: block !important;
+    }
+  }
+  @media (max-width: 375px) {
+    .slick-dots {
+      display: none !important;
+    }
   }
 `;
 
 // ProductSlider component
 function ProductSlider({ onSlider }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 375);
+
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 375);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   function handleClick() {
-    onSlider((value) => !value);
+    if (!isMobile) {
+      onSlider((value) => !value);
+    }
   }
   const settings = {
     customPaging: function (i) {
