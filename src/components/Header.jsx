@@ -16,6 +16,7 @@ const StyledHeader = styled.header`
     grid-template-columns: 2rem 6rem 7rem 3rem 3rem;
     width: 100%;
     height: 6rem;
+    background-color: green;
   }
 
   ul {

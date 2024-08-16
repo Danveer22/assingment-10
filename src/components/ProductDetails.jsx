@@ -10,7 +10,7 @@ const StyledArticle = styled.article`
   @media (max-width: 450px) {
     width: 100%;
     padding: 1rem 2rem;
-    margin-top: 2rem;
+    margin-top: 8rem;
   }
 
   h1 {
