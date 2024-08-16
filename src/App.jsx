@@ -21,7 +21,7 @@ const Product = styled.main`
 
   @media (max-width: 450px) {
     width: 100%;
-    grid-template-columns: 26.5rem;
+    grid-template-columns: 24rem;
 
     margin: 0;
     padding: 0;
