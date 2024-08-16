@@ -19,7 +19,7 @@ const Product = styled.main`
   column-gap: 9rem;
   position: relative;
 
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     width: 100%;
     grid-template-columns: 24rem;
 

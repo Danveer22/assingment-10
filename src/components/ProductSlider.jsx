@@ -30,7 +30,7 @@ const SliderContainer = styled.div`
   position: relative;
   height: 41rem;
 
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     height: 20rem;
     align-self: center;
   }
@@ -43,7 +43,7 @@ const StyledSlide = styled.div`
     display: block;
     border-radius: 1rem;
 
-    @media (max-width: 375px) {
+    @media (max-width: 450px) {
       border-radius: 0;
     }
   }
@@ -82,11 +82,11 @@ const StyledSlider = styled(Slider)`
   .slick-next {
     display: none !important;
 
-    @media (max-width: 375px) {
+    @media (max-width: 450px) {
       display: block !important;
     }
   }
-  @media (max-width: 375px) {
+  @media (max-width: 450px) {
     .slick-dots {
       display: none !important;
     }
@@ -95,11 +95,11 @@ const StyledSlider = styled(Slider)`
 
 // ProductSlider component
 function ProductSlider({ onSlider }) {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 375);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
 
   useEffect(() => {
     function handleResize() {
-      setIsMobile(window.innerWidth <= 375);
+      setIsMobile(window.innerWidth <= 450);
     }
 
     window.addEventListener("resize", handleResize);
