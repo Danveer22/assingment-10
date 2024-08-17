@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useCart } from "../CartContext";
+import { useState } from "react";
 
 const StyledHeader = styled.header`
   height: 8rem;
@@ -49,12 +50,45 @@ const StyledHeader = styled.header`
         transition: all 0.2s ease;
       }
     }
+
     a:hover,
     a:active {
       color: var(--color-dark-blue);
     }
+
     a:hover::after {
       transform: scale(1);
+    }
+  }
+`;
+
+const MobileNav = styled.nav`
+  display: none;
+
+  @media (max-width: 450px) {
+    display: block;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding-left: 2rem;
+      background-color: white;
+      margin-top: 7rem;
+    }
+
+    li {
+      font-size: 1.4rem;
+
+      a {
+        color: var(--color-dark-grayish-blue);
+        text-decoration: none;
+        padding: 0.8rem 0;
+        display: block;
+      }
+
+      a:hover {
+        color: var(--color-dark-blue);
+      }
     }
   }
 `;
@@ -66,9 +100,11 @@ const Logo = styled.img`
     height: 1.2rem;
   }
 `;
-
-const Menu = styled.img`
+const MenuButton = styled.button`
+  border: none;
+  cursor: pointer;
   display: none;
+  z-index: 1000;
 
   @media (max-width: 450px) {
     display: block;
@@ -137,16 +173,65 @@ const Popup = styled.span`
   }
 `;
 
+const NavBar = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 110vh;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+`;
+
 function Header() {
   const { dispatch, cart } = useCart();
+  const [isOpen, setIsOpen] = useState(false);
   const isItem = cart.length > 0;
+
   function handleOpen() {
     dispatch({ type: "Cart/open" });
   }
+
+  function handleOpenMenu() {
+    setIsOpen((isOpen) => !isOpen);
+  }
+
   return (
     <StyledHeader>
-      <Menu src="/images/icon-menu.svg" alt="menu icon" />
+      <MenuButton onClick={handleOpenMenu}>
+        {isOpen ? (
+          <img src="/images/icon-close.svg" alt="close icon" />
+        ) : (
+          <img src="/images/icon-menu.svg" alt="menu icon" />
+        )}
+      </MenuButton>
+
       <Logo src="/images/logo.svg" alt="company logo" />
+
+      {isOpen && (
+        <NavBar>
+          <MobileNav>
+            <ul>
+              <li>
+                <a href="#">Collections</a>
+              </li>
+              <li>
+                <a href="#">Men</a>
+              </li>
+              <li>
+                <a href="#">Women</a>
+              </li>
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </MobileNav>
+        </NavBar>
+      )}
+
       <nav>
         <ul>
           <li>
@@ -166,6 +251,7 @@ function Header() {
           </li>
         </ul>
       </nav>
+
       <CartButton aria-label="Cart" onClick={handleOpen}>
         <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
           <path

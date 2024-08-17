@@ -13,7 +13,7 @@ const StyledAside = styled.aside`
   z-index: 999;
 
   @media (max-width: 450px) {
-    right: 54%;
+    right: 52%;
     transform: translateX(50%);
     width: 22rem;
     top: 2%;
