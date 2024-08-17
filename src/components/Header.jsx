@@ -1,6 +1,29 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useCart } from "../CartContext";
 import { useState } from "react";
+
+// Define keyframes for the slide-in and slide-out animations
+const slideIn = keyframes`
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const slideOut = keyframes`
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+`;
 
 const StyledHeader = styled.header`
   height: 8rem;
@@ -36,6 +59,12 @@ const StyledHeader = styled.header`
       display: inline-block;
       position: relative;
       color: var(--color-dark-grayish-blue);
+      text-decoration: none;
+      border-bottom: none;
+
+      @media (max-width: 450px) {
+        border-bottom: none;
+      }
 
       &::after {
         content: "";
@@ -58,6 +87,10 @@ const StyledHeader = styled.header`
 
     a:hover::after {
       transform: scale(1);
+
+      @media (max-width: 450px) {
+        transform: scale(0);
+      }
     }
   }
 `;
@@ -70,7 +103,7 @@ const MobileNav = styled.nav`
     ul {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1.6rem;
       padding-left: 2rem;
       background-color: white;
       margin-top: 7rem;
@@ -84,6 +117,7 @@ const MobileNav = styled.nav`
         text-decoration: none;
         padding: 0.8rem 0;
         display: block;
+        border-bottom: none;
       }
 
       a:hover {
@@ -100,6 +134,7 @@ const Logo = styled.img`
     height: 1.2rem;
   }
 `;
+
 const MenuButton = styled.button`
   border: none;
   cursor: pointer;
@@ -181,6 +216,7 @@ const NavBar = styled.div`
   height: 110vh;
   background-color: rgb(255, 255, 255);
   z-index: 100;
+  animation: ${({ isOpen }) => (isOpen ? slideIn : slideOut)} 0.3s forwards;
 `;
 
 function Header() {
@@ -193,7 +229,7 @@ function Header() {
   }
 
   function handleOpenMenu() {
-    setIsOpen((isOpen) => !isOpen);
+    setIsOpen((prev) => !prev);
   }
 
   return (
@@ -209,7 +245,7 @@ function Header() {
       <Logo src="/images/logo.svg" alt="company logo" />
 
       {isOpen && (
-        <NavBar>
+        <NavBar isOpen={isOpen}>
           <MobileNav>
             <ul>
               <li>
@@ -255,15 +291,14 @@ function Header() {
       <CartButton aria-label="Cart" onClick={handleOpen}>
         <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
-            fill="#69707D"
-            fillRule="nonzero"
+            d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.433h15.27l-1.533 5.623ZM6.358 19.5a.927.927 0 1 0 0-1.854.927.927 0 0 0 0 1.854Zm10.015 0a.927.927 0 1 0 0-1.854.927.927 0 0 0 0 1.854Z"
+            fill="#C3C3C3"
           />
         </svg>
-        {isItem && <Popup>1</Popup>}
+        {isItem && <Popup>{cart.length}</Popup>}
       </CartButton>
 
-      <Avatar src="/images/image-avatar.png" alt="Profile avatar" />
+      <Avatar src="/images/avatar.jpg" alt="user avatar" />
     </StyledHeader>
   );
 }
