@@ -140,6 +140,7 @@ const MenuButton = styled.button`
   cursor: pointer;
   display: none;
   z-index: 1000;
+  margin-right: 1rem;
 
   @media (max-width: 450px) {
     display: block;
@@ -298,7 +299,7 @@ function Header() {
         {isItem && <Popup>{cart.length}</Popup>}
       </CartButton>
 
-      <Avatar src="/images/avatar.jpg" alt="user avatar" />
+      <Avatar src="/images/image-avatar.png" alt="user avatar" />
     </StyledHeader>
   );
 }
