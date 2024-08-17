@@ -110,7 +110,7 @@ const MobileNav = styled.nav`
     }
 
     li {
-      font-size: 1.4rem;
+      font-size: 0.8rem;
 
       a {
         color: var(--color-dark-grayish-blue);
