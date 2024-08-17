@@ -141,6 +141,7 @@ const MenuButton = styled.button`
   display: none;
   z-index: 1000;
   margin-right: 1rem;
+  background: none;
 
   @media (max-width: 450px) {
     display: block;
