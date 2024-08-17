@@ -130,7 +130,11 @@ const Popup = styled.span`
   justify-content: center;
   align-items: center;
   top: -1rem;
-  right: 0;
+  right: 2.5rem;
+
+  @media (max-width: 450px) {
+    right: 0;
+  }
 `;
 
 function Header() {
